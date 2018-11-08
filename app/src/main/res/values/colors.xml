@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#E0E0E0</color>
+    <color name="colorPrimaryDark">#FBB8AC</color>
+    <color name="colorAccent">#FEDBD0</color>
+    <color name="loginPageBackgroundColor">#FFFFFF</color>
+    <color name="colorControlActivated">#FBB8AC</color>
+    <color name="productGridBackgroundColor">#FFFBFA</color>
+    <color name="colorTextColor">#303030</color>
+    <color name="colorNote">#606060</color>
+    <color name="colorDivider">#D0D0D0</color>
+    <color name="event_color_01">#59dbe0</color>
+    <color name="event_color_02">#f57f68</color>
+    <color name="event_color_03">#87d288</color>
+    <color name="event_color_04">#f8b552</color>
+    <color name="toolbarIconColor">#ffffff</color>
+    <color name="icon_enabled">#FFFFFFFF</color>
+    <color name="icon_disabled">#FF63727B</color>
+</resources>
