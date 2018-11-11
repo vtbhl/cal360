@@ -21,6 +21,7 @@ import com.hl.cal360.custom.DrawerSafeViewPager
 import com.hl.cal360.fragment.CalendarFragment
 import com.hl.cal360.fragment.LoginFragment
 import com.hl.cal360.fragment.MaterialCalendarFragment
+import com.hl.cal360.fragment.RegisterFragment
 import java.util.*
 
 
@@ -78,7 +79,7 @@ class MainActivity : AppCompatActivity(), NavigationHost {
 
     private fun setupViewPager(viewPager: ViewPager) {
         val adapter=ViewPagerAdapter(supportFragmentManager)
-        adapter.addFragment(MaterialCalendarFragment(), "ONE")
+        adapter.addFragment(RegisterFragment(), "REGISTER")
         adapter.addFragment(CalendarFragment(), "TWO")
         viewPager.adapter=adapter
     }

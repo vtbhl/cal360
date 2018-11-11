@@ -30,4 +30,5 @@
     <string name="cal360_categories">Categories</string>
     <string name="cal360_drawer_open">Open navigation drawer</string>
     <string name="cal360_drawer_close">Close navigation drawer</string>
+    <string name="MAP_API_KEY">AIzaSyBjgDpFA-AQM1KtRgkC97L3BUMieEam4Dw</string>
 </resources>
