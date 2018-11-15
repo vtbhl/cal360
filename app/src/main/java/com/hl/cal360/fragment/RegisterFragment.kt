@@ -9,7 +9,7 @@ import com.google.android.gms.maps.*
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.hl.cal360.R
-
+import com.hl.cal360.network.WebService
 
 
 
@@ -36,32 +36,23 @@ class RegisterFragment : Fragment(),OnMapReadyCallback {
             e.printStackTrace()
         }
         mMapView.getMapAsync (this)
-//            OnMapReadyCallback() {
-//                fun onMapReady(googleMap: GoogleMap) {
-//                    if (googleMap != null) {
-//                        var marketLatLng = LatLng(17.385044, 78.486671)
-//                        googleMap.uiSettings.setAllGesturesEnabled(true)
-//
-//                        var cameraPosition: CameraPosition =
-//                            CameraPosition.Builder().target(marketLatLng).zoom(15.0f).build()
-//                        var cameraUpdate: CameraUpdate = CameraUpdateFactory.newCameraPosition(cameraPosition)
-//                        googleMap.moveCamera(cameraUpdate)
-//                    }
-//
-//                }
-//            }
-//        }
 
-        //val mapFragment = activity!!.supportFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
-        //mapFragment.getMapAsync(this)
+
+        var path = "https://jsonplaceholder.typicode.com/posts"
+        var textInput = "Đội Cấn, Hà Nội"
+        var path2 = "https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=" + textInput + "&inputtype=textquery&fields=photos,formatted_address,name,rating,opening_hours,geometry&key=" + getString(R.string.MAP_API_KEY)
+        WebService(path2).execute()
 
         return view
-        // Snippet from "Navigate to the next Fragment" section goes here
     }
 
     override fun onMapReady(googleMap: GoogleMap) {
         // Add a marker in Sydney, Australia, and move the camera.
         val sydney = LatLng(-34.0, 151.0)
+        googleMap.uiSettings.setAllGesturesEnabled(true)
+       // var cameraPosition: CameraPosition =  CameraPosition.Builder().target(sydney).zoom(15.0f).build()
+        //var cameraUpdate: CameraUpdate = CameraUpdateFactory.newCameraPosition(cameraPosition)
+       //googleMap.moveCamera(cameraUpdate)
         googleMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
         googleMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
     }

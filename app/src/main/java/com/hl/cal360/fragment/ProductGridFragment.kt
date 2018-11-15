@@ -61,9 +61,6 @@ class ProductGridFragment : Fragment() {
             view.product_grid.background = context?.getDrawable(R.drawable.cal360_product_grid_background_shape)
         }
 
-
-
-
         return view
     }
 
