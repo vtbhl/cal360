@@ -1,4 +1,4 @@
-package com.hl.cal360
+package com.hl.cal360.activity
 
 import android.content.res.Configuration
 import android.content.res.Resources
@@ -16,6 +16,7 @@ import android.support.v7.widget.Toolbar
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
+import com.hl.cal360.R
 import com.hl.cal360.abstracts.NavigationHost
 import com.hl.cal360.custom.DrawerSafeViewPager
 import com.hl.cal360.fragment.CalendarFragment
@@ -25,7 +26,7 @@ import com.hl.cal360.fragment.RegisterFragment
 import java.util.*
 
 
-class MainActivity : AppCompatActivity(), NavigationHost {
+class DashboardActivity : AppCompatActivity(), NavigationHost {
 
     //lateinit var mHelpLiveo: HelpLiveo
     lateinit var mDrawer: DrawerLayout
@@ -36,7 +37,7 @@ class MainActivity : AppCompatActivity(), NavigationHost {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.cal360_main_activity)
+        setContentView(R.layout.cal360_dashboard_activity)
 
 //        if (savedInstanceState == null) {
 //            supportFragmentManager
@@ -75,12 +76,30 @@ class MainActivity : AppCompatActivity(), NavigationHost {
         viewPagerTab.setupWithViewPager(viewPager)
         viewPagerTab.getTabAt(0)!!.setIcon(R.drawable.ic_delete_black_24dp)
         viewPagerTab.getTabAt(1)!!.setIcon(R.drawable.ic_drafts_black_24dp)
+
+
+//        layout.setOnTouchListener( View.OnTouchListener() {
+//
+//            override fun onTouch(v: View, event: MotionEvent):Boolean {
+//                if (event.getAction() == MotionEvent.ACTION_DOWN) {
+//                    if (actionBar.isShowing()) {
+//                        actionBar.hide();
+//                    } else {
+//                        actionBar.show();
+//                    }
+//                    return true;
+//                } else return false;
+//            }
+//        });
+
     }
 
     private fun setupViewPager(viewPager: ViewPager) {
         val adapter=ViewPagerAdapter(supportFragmentManager)
+
         adapter.addFragment(RegisterFragment(), "REGISTER")
         adapter.addFragment(CalendarFragment(), "TWO")
+        //adapter.addFragment(CalendarFragment(), "TWO")
         viewPager.adapter=adapter
     }
 
@@ -122,9 +141,9 @@ class MainActivity : AppCompatActivity(), NavigationHost {
         val fragmentClass: Class<*>
         when (menuItem.getItemId()) {
             R.id.nav_first_fragment -> fragmentClass= LoginFragment::class.java
-            R.id.nav_second_fragment -> fragmentClass=CalendarFragment::class.java
-            R.id.nav_third_fragment -> fragmentClass=MaterialCalendarFragment::class.java
-            else -> fragmentClass=LoginFragment::class.java
+            R.id.nav_second_fragment -> fragmentClass= CalendarFragment::class.java
+            R.id.nav_third_fragment -> fragmentClass= MaterialCalendarFragment::class.java
+            else -> fragmentClass= LoginFragment::class.java
         }
 
         try {
@@ -156,7 +175,10 @@ class MainActivity : AppCompatActivity(), NavigationHost {
     private fun setupDrawerToggle(): ActionBarDrawerToggle {
         // NOTE: Make sure you pass in a valid toolbar reference.  ActionBarDrawToggle() does not require it
         // and will not render the hamburger icon without it.
-        return ActionBarDrawerToggle(this, mDrawer, toolbar, R.string.cal360_drawer_open, R.string.cal360_drawer_close)
+        return ActionBarDrawerToggle(this, mDrawer, toolbar,
+            R.string.cal360_drawer_open,
+            R.string.cal360_drawer_close
+        )
     }
 
 
@@ -196,5 +218,7 @@ class MainActivity : AppCompatActivity(), NavigationHost {
             true
         } else super.onOptionsItemSelected(item)
     }
+
+
 
 }

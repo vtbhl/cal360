@@ -19,7 +19,7 @@ import com.hl.cal360.network.WebService
  */
 class RegisterFragment : Fragment(),OnMapReadyCallback {
 
-    private var mMap: GoogleMap? = null
+//    private var mMap: GoogleMap? = null
     lateinit var mMapView :MapView
 
     override fun onCreateView(
@@ -41,7 +41,7 @@ class RegisterFragment : Fragment(),OnMapReadyCallback {
         var path = "https://jsonplaceholder.typicode.com/posts"
         var textInput = "Đội Cấn, Hà Nội"
         var path2 = "https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=" + textInput + "&inputtype=textquery&fields=photos,formatted_address,name,rating,opening_hours,geometry&key=" + getString(R.string.MAP_API_KEY)
-        WebService(path2).execute()
+        WebService(path).execute()
 
         return view
     }
