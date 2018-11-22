@@ -44,7 +44,7 @@ class LoginFragment : Fragment() {
             if (!isPasswordValid(password_edit_text.text!!)) {
                 password_text_input.error = getString(R.string.cal360_error_password)
                 //intent.putExtra(INTENT_USER_ID, user.id)
-                //(activity as NavigationHost).navigateTo(MaterialCalendarFragment(), false)
+                //(activity as NavigationHost).navigateTo(ProductGridFragment(), false)
             } else {
                 // Clear the error.
                 password_text_input.error = null
@@ -58,7 +58,7 @@ class LoginFragment : Fragment() {
         }
 
         view.cancel_button.setOnClickListener{
-            (activity as NavigationHost).navigateTo(ProductGridFragment(), false)
+            (activity as NavigationHost).navigateTo(RegisterFragment(), false)
 //            (activity as NavigationHost).navigateTo(MaterialCalendarFragment(), false)
         }
 

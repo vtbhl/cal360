@@ -36,6 +36,7 @@ class StaggeredProductCardRecyclerViewAdapter(private val productList: List<Prod
             val product = productList[position]
             holder.productTitle.text = product.title
             holder.productPrice.text = product.price
+            //val imgUrl = "https://images.pexels.com/photos/1211771/pexels-photo-1211771.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
             ImageRequester.setImageFromUrl(holder.productImage, product.url)
         }
     }
