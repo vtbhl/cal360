@@ -22,6 +22,7 @@
         </activity>
         <activity android:name=".activity.DashboardActivity"/>
         <activity android:name=".activity.ShopActivity"/>
+        <activity android:name=".activity.ShopCalActivity"/>
         <meta-data
                 android:name="com.google.android.geo.API_KEY"
                 android:value="@string/MAP_API_KEY"/>

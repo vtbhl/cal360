@@ -15,6 +15,7 @@ import android.view.View
 import android.widget.*
 import com.hl.cal360.R
 import com.hl.cal360.abstracts.NavigationHost
+import com.hl.cal360.adapter.ProductCardRecyclerViewAdapter
 import com.hl.cal360.adapter.ProductGridItemDecoration
 import com.hl.cal360.network.ProductEntry
 import com.hl.cal360.staggeredgridlayout.StaggeredProductCardRecyclerViewAdapter
@@ -42,7 +43,18 @@ class ShopActivity : AppCompatActivity(),NavigationHost {
         shopProductGrid = findViewById(R.id.shop_product_grid) as NestedScrollView
 
         setSupportActionBar(mToolbar)
+        setProductGrid()
+        setProductGridVertical()
 
+//        if (savedInstanceState == null) {
+//            supportFragmentManager
+//                    .beginTransaction()
+//                    .add(R.id.shop_container, RegisterFragment())
+//                    .commit()
+//        }
+    }
+
+    private fun setProductGrid(){
         val recyclerView = findViewById(R.id.shop_recycler_view) as RecyclerView
         recyclerView.setHasFixedSize(true)
         val gridLayoutManager = GridLayoutManager(applicationContext, 2, GridLayoutManager.HORIZONTAL, false)
@@ -60,18 +72,24 @@ class ShopActivity : AppCompatActivity(),NavigationHost {
         recyclerView.addItemDecoration(ProductGridItemDecoration(largePadding, smallPadding))
 
 
+    }
 
 
-//        if (savedInstanceState == null) {
-//            supportFragmentManager
-//                    .beginTransaction()
-//                    .add(R.id.shop_container, RegisterFragment())
-//                    .commit()
-//        }
+    private fun setProductGridVertical(){
+        val recyclerView = findViewById(R.id.shop_recycler_view_2)  as RecyclerView
+        recyclerView.setHasFixedSize(true)
+        recyclerView.setLayoutManager(GridLayoutManager(applicationContext, 2, GridLayoutManager.VERTICAL, false))
+        val adapter = ProductCardRecyclerViewAdapter(
+            ProductEntry.initProductEntryList(resources)
+        )
+        recyclerView.setAdapter(adapter)
+        val largePadding = resources.getDimensionPixelSize(R.dimen.cal360_product_grid_spacing)
+        val smallPadding = resources.getDimensionPixelSize(R.dimen.cal360_product_grid_spacing_small)
+        recyclerView.addItemDecoration(ProductGridItemDecoration(largePadding, smallPadding))
     }
 
     private fun setList(){
-        arrayMonth = arrayOf ("January","Febuary","March","April","May","June","July","August","September","October","November","December")
+        arrayMonth = arrayOf ("January","February","March","April","May","June","July","August","September","October","November","December")
         mAdapter = ArrayAdapter(
             this,
             android.R.layout.simple_list_item_1,
@@ -118,9 +136,9 @@ class ShopActivity : AppCompatActivity(),NavigationHost {
             }
 
             override fun onQueryTextChange(newText: String): Boolean {
-                if (shopProductGrid.visibility != View.GONE) {
+                //if (shopProductGrid.visibility != View.GONE) {
                     shopProductGrid.visibility = View.GONE
-                }
+                //}
                 if (!newText.equals("")) {
                     setList()
                     mAdapter.getFilter().filter(newText)

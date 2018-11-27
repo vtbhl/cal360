@@ -2,7 +2,9 @@ package com.hl.cal360.adapter
 
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import com.hl.cal360.R
 import com.hl.cal360.network.ImageRequester
 import com.hl.cal360.network.ProductEntry
@@ -24,6 +26,12 @@ class ProductCardRecyclerViewAdapter(private val productList: List<ProductEntry>
             holder.productTitle.text = product.title
             holder.productPrice.text = product.price
             ImageRequester.setImageFromUrl(holder.productImage, product.url)
+            holder.itemView.setOnClickListener(object : View.OnClickListener {
+                override fun onClick(v: View) {
+                    Toast.makeText(v.context, holder.productTitle.text, Toast.LENGTH_SHORT).show()
+
+                }
+            })
         }
     }
 

@@ -2,10 +2,14 @@
 package com.hl.cal360.staggeredgridlayout
 
 
+import android.app.Activity
+import android.content.Intent
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import com.hl.cal360.R
+import com.hl.cal360.activity.ShopCalActivity
 import com.hl.cal360.network.ImageRequester
 import com.hl.cal360.network.ProductEntry
 
@@ -18,6 +22,7 @@ class StaggeredProductCardRecyclerViewAdapter(private val productList: List<Prod
     override fun getItemViewType(position: Int): Int {
         return position % 3
     }
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StaggeredProductCardViewHolder {
         var layoutId = R.layout.cal360_staggered_product_card_first
@@ -36,9 +41,17 @@ class StaggeredProductCardRecyclerViewAdapter(private val productList: List<Prod
             val product = productList[position]
             holder.productTitle.text = product.title
             holder.productPrice.text = product.price
-            //val imgUrl = "https://images.pexels.com/photos/1211771/pexels-photo-1211771.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
             ImageRequester.setImageFromUrl(holder.productImage, product.url)
+            holder.itemView.setOnClickListener(object : View.OnClickListener {
+                override fun onClick(v: View) {
+                    val intent = Intent(v.context, ShopCalActivity::class.java)
+                    v.context.startActivity(intent)
+                    (v.context as Activity).finish()
+                }
+            })
         }
+
+
     }
 
     override fun getItemCount(): Int {
