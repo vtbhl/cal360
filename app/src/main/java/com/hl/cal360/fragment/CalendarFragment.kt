@@ -11,7 +11,6 @@ import com.alamkanak.weekview.WeekView
 import com.alamkanak.weekview.WeekViewEvent
 import com.hl.cal360.R
 import com.hl.cal360.R.layout.cal360_calendar_fragment
-import jp.co.recruit_mp.android.lightcalendarview.LightCalendarView
 import kotlinx.android.synthetic.main.cal360_calendar_fragment.view.*
 import java.text.SimpleDateFormat
 import java.util.*
@@ -187,7 +186,7 @@ class CalendarFragment : Fragment(), WeekView.EventClickListener,MonthLoader.Mon
         Toast.makeText(context, "Clicked " + event?.getName(), Toast.LENGTH_SHORT).show()
     }
 
-    lateinit var calendarView: LightCalendarView
+    //lateinit var calendarView: LightCalendarView
     private val formatter = SimpleDateFormat("MMMM yyyy", Locale.getDefault())
 
     override fun onCreate(savedInstanceState: Bundle?) {

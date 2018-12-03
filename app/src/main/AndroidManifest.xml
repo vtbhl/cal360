@@ -20,9 +20,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.DashboardActivity"/>
-        <activity android:name=".activity.ShopActivity"/>
-        <activity android:name=".activity.ShopCalActivity"/>
+        <activity android:name=".activity.DashboardActivity" android:label = ""/>
+        <activity android:name=".activity.ShopActivity" android:label = ""/>
+        <activity android:name=".activity.ShopCalActivity" android:label = ""/>
+        <activity android:name=".activity.CreateCalActivity" android:label = ""/>
         <meta-data
                 android:name="com.google.android.geo.API_KEY"
                 android:value="@string/MAP_API_KEY"/>

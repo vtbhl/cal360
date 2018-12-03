@@ -24,7 +24,7 @@ import com.hl.cal360.staggeredgridlayout.StaggeredProductCardRecyclerViewAdapter
 class ShopActivity : AppCompatActivity(),NavigationHost {
 
     //lateinit var mHelpLiveo: HelpLiveo
-    lateinit var toolbar: Toolbar
+    //lateinit var toolbar: Toolbar
     lateinit var mToolbar: Toolbar
     lateinit var mAdapter: ArrayAdapter<*>
     lateinit var mListView: ListView

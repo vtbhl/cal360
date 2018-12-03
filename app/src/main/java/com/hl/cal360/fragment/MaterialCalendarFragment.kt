@@ -1,5 +1,7 @@
 package com.hl.cal360.fragment
 
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
@@ -9,6 +11,7 @@ import android.widget.ArrayAdapter
 import android.widget.Toast
 import com.hl.cal360.R
 import com.hl.cal360.R.layout.cal360_material_calendar_fragment
+import com.hl.cal360.activity.CreateCalActivity
 import com.hl.cal360.adapter.ShopCalViewAdapter
 import com.hl.cal360.network.ShopCal
 import com.prolificinteractive.materialcalendarview.CalendarDay
@@ -79,7 +82,13 @@ class MaterialCalendarFragment() : Fragment() , OnDateSelectedListener {
         mAdapter = ShopCalViewAdapter(view.context, R.layout.cal360_item_list_shopcal,shopCalList)
 
         view.scheduleList.adapter = mAdapter
-
+        view.fabAddCal.setOnClickListener(object: View.OnClickListener{
+            override fun onClick(p0: View?) {
+                val intent = Intent(view.context, CreateCalActivity::class.java)
+                view.context.startActivity(intent)
+                (view.context as Activity).finish()
+            }
+        })
 
 //        (activity as AppCompatActivity).setSupportActionBar(view.app_bar)
 //        view.app_bar.setNavigationOnClickListener( NavigationIconClickListener(
@@ -93,13 +102,19 @@ class MaterialCalendarFragment() : Fragment() , OnDateSelectedListener {
         //view.scheduleList.setOnScrollListener(
         view.scheduleList.setOnScrollChangeListener(object:View.OnScrollChangeListener{
             override fun onScrollChange(p0: View?, scrollX: Int, scrollY: Int, oldScrollX: Int, oldScrollY: Int) {
-                //scroll down
+                //scroll up
                 if (oldScrollY > scrollY){
                     view.calendarView.animate().translationY(100.0f-view.calendarView.height).withLayer()
-                    view.scheduleList.animate().translationY(120.0f-view.calendarView.height).withLayer()
+                    //view.calendarViewWeek.animate().translationY(100.0f-view.calendarViewWeek.height).withLayer()
+                    view.calendarViewWeek.visibility = View.VISIBLE
+                    view.calendarView.visibility = View.GONE
+                    view.scheduleList.animate().translationY(100.0f-view.calendarView.height).withLayer()
+
 
                 }
                 if (oldScrollY <  scrollY){
+                    view.calendarViewWeek.visibility = View.GONE
+                    view.calendarView.visibility = View.VISIBLE
                     view.calendarView.animate().translationY(0.0f ).withLayer()
                     view.scheduleList.animate().translationY(0.0f ).withLayer()
                 }
