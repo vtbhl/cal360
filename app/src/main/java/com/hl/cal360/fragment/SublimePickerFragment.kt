@@ -35,7 +35,6 @@ class SublimePickerFragment : DialogFragment() {
             if (mCallback != null) {
                 mCallback!!.onCancelled()
             }
-
             // Should actually be called by activity inside `Callback.onCancelled()`
             dismiss()
         }
@@ -54,8 +53,8 @@ class SublimePickerFragment : DialogFragment() {
                 )
             }
 
-            // Should actually be called by activity inside `Callback.onCancelled()`
             dismiss()
+
         }
         // You can also override 'formatDate(Date)' & 'formatTime(Date)'
         // to supply custom formatters.
@@ -74,15 +73,7 @@ class SublimePickerFragment : DialogFragment() {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        /*try {
-            //getActivity().getLayoutInflater()
-                    //.inflate(R.layout.sublime_recurrence_picker, new FrameLayout(getActivity()), true);
-            getActivity().getLayoutInflater()
-                    .inflate(R.layout.sublime_date_picker, new FrameLayout(getActivity()), true);
-        } catch (Exception e) {
-            e.printStackTrace();
-            throw new RuntimeException();
-        }*/
+
         mSublimePicker = inflater.inflate(R.layout.sublime_picker, container,false) as SublimePicker
 
         // Retrieve SublimeOptions
